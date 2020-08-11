@@ -32,8 +32,8 @@ public class Client extends Enity {
         //Creates a prepared statement. 
         //Connects to the remote Database
         Class.forName("com.mysql.jdbc.Driver");
-         String connectionUrl = "jdbc:mysql://cloud19.hostgator.com/uzaqleuw_Simpledatabase";
-        con = DriverManager.getConnection(connectionUrl, "uzaqleuw_root", "3Hotdogs!");
+         String connectionUrl = "jdbc:mysql://***************/***************";
+        con = DriverManager.getConnection(connectionUrl, "***************", "***************");
         //SQL for add
         pst = con.prepareStatement("INSERT INTO Clients(ClientID,Clientname)values(?,?)");
         //set the variables for add
@@ -49,7 +49,7 @@ public class Client extends Enity {
         Connection con;
         //Connect to the remote Database
         Class.forName("com.mysql.jdbc.Driver");
-        con = DriverManager.getConnection("jdbc:mysql://cloud19.hostgator.com/uzaqleuw_Simpledatabase", "uzaqleuw_root", "3Hotdogs!");
+        con = DriverManager.getConnection("jdbc:mysql://***************/***************", "***************", "***************");
         //Creates a staement
         Statement st = con.createStatement();
         //SQL for update
@@ -69,7 +69,7 @@ public class Client extends Enity {
         try {
             //connects to the database
             Class.forName("com.mysql.jdbc.Driver");
-            con = DriverManager.getConnection("jdbc:mysql://cloud19.hostgator.com/uzaqleuw_Simpledatabase", "uzaqleuw_root", "3Hotdogs!");
+              con = DriverManager.getConnection("jdbc:mysql://***************/***************", "***************", "***************");
             //Prepares the sql statement
             String query = "SELECT * FROM Clients";
             //Creates a statement
@@ -99,7 +99,7 @@ public class Client extends Enity {
             PreparedStatement pst;
             //connects to the database
             Class.forName("com.mysql.jdbc.Driver");
-            con = DriverManager.getConnection("jdbc:mysql://cloud19.hostgator.com/uzaqleuw_Simpledatabase", "uzaqleuw_root", "3Hotdogs!");
+              con = DriverManager.getConnection("jdbc:mysql://***************/***************", "***************", "***************");
             //Prepares the sql statement
             pst = con.prepareStatement("SELECT * FROM Clients where ClientID = ?");
              //sets the variables for sql statement
