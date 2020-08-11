@@ -61,8 +61,8 @@ public class Transaction extends Enity {
         PreparedStatement pst;
         //Connects to the remote Database
         Class.forName("com.mysql.jdbc.Driver");
-        String connectionUrl = "jdbc:mysql://cloud19.hostgator.com/uzaqleuw_Simpledatabase";
-        con = DriverManager.getConnection(connectionUrl, "uzaqleuw_root", "3Hotdogs!");
+        String connectionUrl = "jdbc:mysql://************/************";
+        con = DriverManager.getConnection(connectionUrl, "************", "************");
         //SQL for add
         pst = con.prepareStatement("INSERT INTO Transactions(TransactionID,Amount,Description,ClientID,Date)values(?,?,?,?,?)");
         //sets the variables for add
