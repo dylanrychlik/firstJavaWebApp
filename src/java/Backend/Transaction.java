@@ -42,8 +42,8 @@ public class Transaction extends Enity {
     public void Update(String TransactionID, String Amount, String Description, String ClientID, String Date) throws ClassNotFoundException, SQLException {
         //Create a connection object
         Connection con;
-       
-      con = this.getConnection();
+
+        con = this.getConnection();
         //Creates a staement
         Statement st = con.createStatement();
         //SQL for update
@@ -59,7 +59,7 @@ public class Transaction extends Enity {
         //Creates a prepared statement. 
         PreparedStatement pst;
         //Connects to the remote Database
-         con = this.getConnection();
+        con = this.getConnection();
         //SQL for add
         pst = con.prepareStatement("INSERT INTO Transactions(TransactionID,Amount,Description,ClientID,Date)values(?,?,?,?,?)");
         //sets the variables for add
@@ -82,7 +82,7 @@ public class Transaction extends Enity {
             //creates a preparedstatement
             PreparedStatement pst;
             //connects to the database
-           con = this.getConnection();
+            con = this.getConnection();
             //Prepare the sql statement
             pst = con.prepareStatement("SELECT * FROM Transactions where TransactionID = ?");
             //set the variables for sql statement
