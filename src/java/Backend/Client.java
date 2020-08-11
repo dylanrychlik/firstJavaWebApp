@@ -31,9 +31,7 @@ public class Client extends Enity {
         PreparedStatement pst;
         //Creates a prepared statement. 
         //Connects to the remote Database
-        Class.forName("com.mysql.jdbc.Driver");
-         String connectionUrl = "jdbc:mysql://cloud19.hostgator.com/uzaqleuw_Simpledatabase";
-        con = DriverManager.getConnection(connectionUrl, "uzaqleuw_root", "3Hotdogs!");
+        con = this.getConnection();
         //SQL for add
         pst = con.prepareStatement("INSERT INTO Clients(ClientID,Clientname)values(?,?)");
         //set the variables for add
@@ -48,8 +46,7 @@ public class Client extends Enity {
         //Creates a connection object
         Connection con;
         //Connect to the remote Database
-        Class.forName("com.mysql.jdbc.Driver");
-        con = DriverManager.getConnection("jdbc:mysql://cloud19.hostgator.com/uzaqleuw_Simpledatabase", "uzaqleuw_root", "3Hotdogs!");
+        con = this.getConnection();
         //Creates a staement
         Statement st = con.createStatement();
         //SQL for update
@@ -68,8 +65,7 @@ public class Client extends Enity {
         //try
         try {
             //connects to the database
-            Class.forName("com.mysql.jdbc.Driver");
-            con = DriverManager.getConnection("jdbc:mysql://cloud19.hostgator.com/uzaqleuw_Simpledatabase", "uzaqleuw_root", "3Hotdogs!");
+            con = this.getConnection();
             //Prepares the sql statement
             String query = "SELECT * FROM Clients";
             //Creates a statement
@@ -77,7 +73,7 @@ public class Client extends Enity {
             //Executes the SQL
             rs = st.executeQuery(query);
 
-        }  //catches
+        } //catches
         catch (ClassNotFoundException ex) {
             Logger.getLogger(Transaction.class.getName()).log(Level.SEVERE, null, ex);
         } catch (SQLException ex) {
@@ -89,22 +85,21 @@ public class Client extends Enity {
 
     @Override
     public ResultSet SelectWhere(String id) {
-         //Creates the connection object
+        //Creates the connection object
         Connection con;
-         //creates the resulset object to be returned. 
+        //creates the resulset object to be returned. 
         ResultSet rs = null;
-         //try statement
+        //try statement
         try {
-             //creates a preparedstatement
+            //creates a preparedstatement
             PreparedStatement pst;
             //connects to the database
-            Class.forName("com.mysql.jdbc.Driver");
-            con = DriverManager.getConnection("jdbc:mysql://cloud19.hostgator.com/uzaqleuw_Simpledatabase", "uzaqleuw_root", "3Hotdogs!");
+            con = this.getConnection();
             //Prepares the sql statement
             pst = con.prepareStatement("SELECT * FROM Clients where ClientID = ?");
-             //sets the variables for sql statement
+            //sets the variables for sql statement
             pst.setString(1, id);
-             //executes the query
+            //executes the query
             rs = pst.executeQuery();
         } //catches 
         catch (ClassNotFoundException ex) {
