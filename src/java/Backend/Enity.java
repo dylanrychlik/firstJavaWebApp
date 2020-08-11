@@ -23,8 +23,8 @@ public abstract class Enity {
         Connection con;
         //Connects to the remote Database
         Class.forName("com.mysql.jdbc.Driver");
-        String connectionUrl = "jdbc:mysql://cloud19.hostgator.com/uzaqleuw_Simpledatabase";
-        con = DriverManager.getConnection(connectionUrl, "uzaqleuw_root", "3Hotdogs!");
+        String connectionUrl = "jdbc:mysql://**********/***********";
+        con = DriverManager.getConnection(connectionUrl, "**********", "********");
         //Returns the connection object
         return con;
     }
