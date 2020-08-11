@@ -86,7 +86,7 @@ public class Transaction extends Enity {
             PreparedStatement pst;
             //connects to the database
             Class.forName("com.mysql.jdbc.Driver");
-            con = DriverManager.getConnection("jdbc:mysql://cloud19.hostgator.com/uzaqleuw_Simpledatabase", "uzaqleuw_root", "3Hotdogs!");
+            con = DriverManager.getConnection("jdbc:mysql://************/************", "************", "************");
 
             //Prepare the sql statement
             pst = con.prepareStatement("SELECT * FROM Transactions where TransactionID = ?");
@@ -113,7 +113,7 @@ public class Transaction extends Enity {
         try {
             //connects to the database
             Class.forName("com.mysql.jdbc.Driver");
-           con = DriverManager.getConnection("jdbc:mysql://cloud19.hostgator.com/uzaqleuw_Simpledatabase", "uzaqleuw_root", "3Hotdogs!");
+            con = DriverManager.getConnection("jdbc:mysql://************/************", "************", "************");
             //Prepare the sql statement
             String query = "SELECT * FROM Transactions";
             //Creates a statement
