@@ -32,7 +32,7 @@ public class Client extends Enity {
         //Creates a prepared statement. 
         //Connects to the remote Database
         Class.forName("com.mysql.jdbc.Driver");
-        String connectionUrl = "jdbc:mysql://cloud19.hostgator.com/uzaqleuw_Simpledatabase";
+         String connectionUrl = "jdbc:mysql://cloud19.hostgator.com/uzaqleuw_Simpledatabase";
         con = DriverManager.getConnection(connectionUrl, "uzaqleuw_root", "3Hotdogs!");
         //SQL for add
         pst = con.prepareStatement("INSERT INTO Clients(ClientID,Clientname)values(?,?)");
