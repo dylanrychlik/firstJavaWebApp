@@ -48,15 +48,15 @@
                 <form  method="POST" action="#" >
 
                     <%  
-                        //Create a resultset object to read the MySQL query.  
+                        //Creates a resultset object to read the MySQL query.  
                          ResultSet rs;
-                         //Call the id parameter which referenced the id of the record we want to update.
+                         //Calls the id parameter which referenced the id of the record we want to update.
                         String id = request.getParameter("id");
-                        //Create an enity object to be assigned to the client object using polymorphism. 
+                        //Creates an enity object to be assigned to the client object using polymorphism. 
                         Enity client = new Client();
                        
                         rs = client.SelectWhere(id);
-                       //read through the result set. Mix in the html to allow the record to be selected based upon a specified ID. 
+                       //reads through the result set. Mixed in the html to allow the record to be selected based upon a specified ID. 
                         while (rs.next()) {
 
                     %>

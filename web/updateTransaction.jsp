@@ -11,15 +11,15 @@
 <%
      //If submit button is clicked
     if (request.getParameter("submit") != null) {
-         //Uses strings to request the parameters input text name made in html. 
+         //Uses strings to request the parameters of the input textfields. 
         String TransactionID = request.getParameter("id");
         String Amount = request.getParameter("amount");
         String Description = request.getParameter("description");
         String ClientID = request.getParameter("clientID");
         String Date = request.getParameter("date");
-         //Create a Transaction object referenced in the backend
+         //Creates a Transaction object referenced in the backend
         Transaction transaction = new Transaction(TransactionID, Amount, Description, ClientID, Date);
-         //Call the MySQL update method. 
+         //Calls the MySQL update method. 
         transaction.Update(TransactionID, Amount, Description, ClientID, Date);
 
 
@@ -50,15 +50,15 @@
                 <form  method="POST" action="#" >
 
                     <%  
-                         //Create a resultset object to read the MySQL query. 
+                         //Creates a resultset object to read the MySQL query. 
                         ResultSet rs;
-                        //Call the id parameter which referenced the id of the record we want to update.
+                        //Calls the id parameter which referenced the id of the record we want to update.
                         String id = request.getParameter("id");
-                         //Create an enity object to be assigned to the Transaction object using polymorphism. 
+                         //Creates an enity object to be assigned to the Transaction object using polymorphism. 
                         Enity transaction = new Transaction();
                          
                         rs = transaction.SelectWhere(id);
-                        //read through the result set. Mix in the html to allow the record to be selected based upon a specified ID. 
+                        //reads through the result set. Mixed in the html to allow the record to be selected based upon a specified ID. 
                         while (rs.next()) {
 
                     %>

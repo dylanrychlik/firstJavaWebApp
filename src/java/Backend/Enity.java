@@ -3,9 +3,9 @@ package Backend;
 
 import java.sql.*;
 
-//Makes enity abtract
+//Makes enity abstract 
 public abstract class Enity {
-    //intance variable 'Client_ID'
+    //instance variable 'Client_ID'
     private String Client_ID;
     
     //main constructor
@@ -18,7 +18,7 @@ public abstract class Enity {
     }
  
  
-    //abtract methods with a resultset return type. 
+    //abstract methods with a resultset return type. 
     public abstract ResultSet Select();
     
     public abstract ResultSet SelectWhere(String ID);

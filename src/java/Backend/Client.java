@@ -27,10 +27,10 @@ public class Client extends Enity {
 
     public void Add(String ClientID, String Clientname) throws ClassNotFoundException, SQLException {
         Connection con;
-        //Create a connection object
+        //Creates a connection object
         PreparedStatement pst;
-        //Create a prepared statement. 
-        //Connect to the remote Database
+        //Creates a prepared statement. 
+        //Connects to the remote Database
         Class.forName("com.mysql.jdbc.Driver");
         String connectionUrl = "jdbc:mysql://cloud19.hostgator.com/uzaqleuw_Simpledatabase";
         con = DriverManager.getConnection(connectionUrl, "uzaqleuw_root", "3Hotdogs!");
@@ -39,42 +39,42 @@ public class Client extends Enity {
         //set the variables for add
         pst.setString(1, ClientID);
         pst.setString(2, Clientname);
-        //Execute the SQL
+        //Executes the SQL
         pst.executeUpdate();
     }
 //Update method that uses the resquest.getparamters string as the emthod paramters. 
 
     public void Update(String ClientID, String Clientname) throws ClassNotFoundException, SQLException {
-        //Create a connection object
+        //Creates a connection object
         Connection con;
         //Connect to the remote Database
         Class.forName("com.mysql.jdbc.Driver");
         con = DriverManager.getConnection("jdbc:mysql://cloud19.hostgator.com/uzaqleuw_Simpledatabase", "uzaqleuw_root", "3Hotdogs!");
-        //Create a staement
+        //Creates a staement
         Statement st = con.createStatement();
         //SQL for update
         String sql = "UPDATE `Clients` SET `Clientname`='" + Clientname + "' WHERE `ClientID`='" + ClientID + "';";
-        //Execute the SQL
+        //Executes the SQL
         st.executeUpdate(sql);
 
     }
 
     @Override
     public ResultSet Select() {
-        //Create the connection object
+        //Creates the connection object
         Connection con;
-        //create the resulset object to be returned. 
+        //creates the resulset object to be returned. 
         ResultSet rs = null;
         //try
         try {
-            //connect to the database
+            //connects to the database
             Class.forName("com.mysql.jdbc.Driver");
             con = DriverManager.getConnection("jdbc:mysql://cloud19.hostgator.com/uzaqleuw_Simpledatabase", "uzaqleuw_root", "3Hotdogs!");
-            //Prepare the sql statement
+            //Prepares the sql statement
             String query = "SELECT * FROM Clients";
-            //Create a statement
+            //Creates a statement
             Statement st = con.createStatement();
-            //Executet the SQL
+            //Executes the SQL
             rs = st.executeQuery(query);
 
         }  //catches
@@ -89,22 +89,22 @@ public class Client extends Enity {
 
     @Override
     public ResultSet SelectWhere(String id) {
-         //Create the connection object
+         //Creates the connection object
         Connection con;
-         //create the resulset object to be returned. 
+         //creates the resulset object to be returned. 
         ResultSet rs = null;
          //try statement
         try {
-             //create a preparedstatement
+             //creates a preparedstatement
             PreparedStatement pst;
-            //connect to the database
+            //connects to the database
             Class.forName("com.mysql.jdbc.Driver");
             con = DriverManager.getConnection("jdbc:mysql://cloud19.hostgator.com/uzaqleuw_Simpledatabase", "uzaqleuw_root", "3Hotdogs!");
-            //Prepare the sql statement
+            //Prepares the sql statement
             pst = con.prepareStatement("SELECT * FROM Clients where ClientID = ?");
-             //set the variables for sql statement
+             //sets the variables for sql statement
             pst.setString(1, id);
-             //execute the query
+             //executes the query
             rs = pst.executeQuery();
         } //catches 
         catch (ClassNotFoundException ex) {

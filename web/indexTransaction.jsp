@@ -1,7 +1,7 @@
 <%-- 
     Document   : index
     Created on : Aug 6, 2020, 8:38:22 PM
-    Author     : drych
+    Author     : Dylan Rychlik
 --%>
 <%@page import="java.sql.*" %> 
 <%@page import="Backend.*" %> 
@@ -12,15 +12,15 @@
 <%
 //If submit button is clicked
     if (request.getParameter("submit") != null) {
-        //Uses strings to request the parameters input text name made in html. 
+        //Uses strings to request the parameters of the input textfields. 
         String TransactionID = request.getParameter("TransactionID");
         String Amount = request.getParameter("Amount");
         String Description = request.getParameter("Description");
         String ClientID = request.getParameter("ClientID");
         String Date = request.getParameter("Date");
- //Create a transaction object referenced in the backend
+ //Creates a transaction object referenced in the backend
         Transaction transaction = new Transaction(TransactionID, Amount, Description, ClientID, Date);
-//Call the MySQL add method. 
+//Calls the MySQL add method. 
         transaction.Add(TransactionID, Amount, Description, ClientID, Date);
 %> 
 <script>
@@ -104,30 +104,31 @@
 
         <div class="col-sm-8">
             <div class="panel-body">
-                <table id="tbl-student" class="table table-responsive table-bordered" cellpadding ="0" width="100%">
+                <table id="tbl-transaction" class="table table-responsive table-bordered" cellpadding ="0" width="100%">
                     <thead>
                         <tr>
-                            <th>Transaction ID<th>
+                          
                             <th>Amount</th>
                             <th>Description</th>
                             <th>Client ID</th>
                             <th>Date</th>
+                            <th>Edit</th>
                         </tr>  
 
                         <%
-                             //Create a resultset object to read the MySQL query. 
+                             //Creates a resultset object to read the MySQL query. 
                             ResultSet rs;
                              //Create an enity object to be assigned to the client object using polymorphism. 
                             Enity transaction = new Transaction();
-                             //call the abtract select method
+                             //calls the abtract select method with the 'rs' variable as the return type.
                             rs = transaction.Select();
-                             //read through the result set. Mix in the html to allow the table read.
+                             //reads through the result set. Mixed in the html to allow the table read.
                             while (rs.next()) {
                                 String id = rs.getString("TransactionID");
                         %>
 
                         <tr>
-                            <td><%=id%></td>
+                            
                             <td><%=rs.getString("Amount")%></td>
                             <td><%=rs.getString("Description")%></td>
                             <td><%=rs.getString("ClientID")%></td>

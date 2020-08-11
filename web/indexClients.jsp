@@ -11,53 +11,53 @@
 <!DOCTYPE html>
 
 <%
-  //If submit button is clicked
+    //If submit button is clicked
     if (request.getParameter("submit") != null) {
-     //Uses strings to request the parameters input text name made in html. 
+        //Uses strings to request the parameters input text name made in html. 
         String ClientID = request.getParameter("ClientID");
         String Clientname = request.getParameter("ClientName");
-      //Create a client object referenced in the backend
+        //Creates a client object referenced in the backend
         Client client = new Client(ClientID, Clientname);
-       //Call the MySQL add method. 
-        client.Add(ClientID,Clientname);
+        //Calls the MySQL add method. 
+        client.Add(ClientID, Clientname);
 %> 
 <script>
     alert("Record Addded!");
 </script> 
 <%        }
 %>
-  <head>
-        <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-        <title>JSP Page</title>
-        <a href="indexTransaction.jsp" class="Transaction">Go to Transaction page</a>
-        <a href="index.html" class="Home">Go to home page</a>
-        <link href="bootstrap/css/bootstrap.css" rel="stylesheet" type="text/css"/>
-        <link href="bootstrap/css/bootstrap.min.css" rel="stylesheet" type="text/css"/>
-    </head>
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+    <title>JSP Page</title>
+<a href="indexTransaction.jsp" class="Transaction">Go to Transaction page</a>
+<a href="index.html" class="Home">Go to home page</a>
+<link href="bootstrap/css/bootstrap.css" rel="stylesheet" type="text/css"/>
+<link href="bootstrap/css/bootstrap.min.css" rel="stylesheet" type="text/css"/>
+</head>
 <body>
-   <style>
+    <style>
 
 
-       
-         .Home {
-                 margin-top: 5px;
-               margin-left:  220px;
-                text-align: center;
-                font-size: 20px;
-                color: #1E90FF;
-               margin-right: 250px;
-              
 
-            }
-             .Transaction {
-               margin-top: 5px;
-               margin-left: 200px;
-                font-size: 20px;
-                color: #1E90FF;
-                 text-align: center;
-               
+        .Home {
+            margin-top: 5px;
+            margin-left:  220px;
+            text-align: center;
+            font-size: 20px;
+            color: #1E90FF;
+            margin-right: 250px;
 
-            }
+
+        }
+        .Transaction {
+            margin-top: 5px;
+            margin-left: 200px;
+            font-size: 20px;
+            color: #1E90FF;
+            text-align: center;
+
+
+        }
     </style>
     <h1>Client Create and Update using-JSP</h1>
     </br>
@@ -87,24 +87,25 @@
                 <table id="tbl-student" class="table table-responsive table-bordered" cellpadding ="0" width="100%">
                     <thead>
                         <tr>
-                            <th>Client ID<th>
+                           
                             <th>Client Name</th>
+                            <th>Edit</th>
                         </tr>  
 
                         <%
-                           //Create a resultset object to read the MySQL query. 
+                            //Creates a resultset object to read the MySQL query. 
                             ResultSet rs;
-                         //Create an enity object to be assigned to the client object using polymorphism. 
-                         Enity client = new Client();
-                         //call the abtract select method
-                         rs = client.Select();
-                         //read through the result set. Mix in the html to allow the table read. 
+                            //Creates an enity object to be assigned to the client object using polymorphism. 
+                            Enity client = new Client();
+                            //calls the abtract select method
+                            rs = client.Select();
+                            //read through the result set. Mixed in the html to allow the table read. 
                             while (rs.next()) {
-                        String id =rs.getString("ClientID");
+                                String id = rs.getString("ClientID");
                         %>
 
                         <tr>
-                            <td><%=id%></td>
+                           
                             <td><%=rs.getString("Clientname")%></td>
                             <td><a href="updateClients.jsp?id=<%=id%>">Edit</a></td>
 

@@ -9,7 +9,7 @@ import java.sql.Statement;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 
-//extends of abtract enity class
+//extends the abtract enity class
 public class Transaction extends Enity {
     //Instance variables
 
@@ -17,7 +17,7 @@ public class Transaction extends Enity {
     private String Amount;
     private String Description;
     private String Date;
-    //constructor that super's the client_ID and intionalizes the other vairables. 
+    //constructor that calls the constructor of the super class. The client_ID get called into the super class while the other variables are intionalized. 
 
     public Transaction(String TransactionID, String Amount, String Description, String Client_ID, String Date) {
         super(Client_ID);
@@ -37,7 +37,7 @@ public class Transaction extends Enity {
         this.Date = "";
 
     }
-    //Update method that uses the resquest.getparamters string as the emthod paramters. 
+    //Update method that uses the resquest.getparamters string as the method paramters. 
 
     public void Update(String TransactionID, String Amount, String Description, String ClientID, String Date) throws ClassNotFoundException, SQLException {
         //Create a connection object
@@ -45,44 +45,44 @@ public class Transaction extends Enity {
         //Connect to the remote Database
         Class.forName("com.mysql.jdbc.Driver");
         con = DriverManager.getConnection("jdbc:mysql://cloud19.hostgator.com/uzaqleuw_Simpledatabase", "uzaqleuw_root", "3Hotdogs!");
-        //Create a staement
+        //Creates a staement
         Statement st = con.createStatement();
         //SQL for update
         String sql = "UPDATE `Transactions` SET `Amount`='" + Amount + "',`Description` ='" + Description + "', `ClientID`= '" + ClientID + "', `Date`= '" + Date + "' WHERE `TransactionID`='" + TransactionID + "';";
-        //Execute the SQL
+        //Executes the SQL
         st.executeUpdate(sql);
 
     }
 
     public void Add(String TransactionID, String Amount, String Description, String ClientID, String Date) throws ClassNotFoundException, SQLException {
-        //Create a connection object
+        //Creates a connection object
         Connection con;
-        //Create a prepared statement. 
+        //Creates a prepared statement. 
         PreparedStatement pst;
-        //Connect to the remote Database
+        //Connects to the remote Database
         Class.forName("com.mysql.jdbc.Driver");
         String connectionUrl = "jdbc:mysql://cloud19.hostgator.com/uzaqleuw_Simpledatabase";
         con = DriverManager.getConnection(connectionUrl, "uzaqleuw_root", "3Hotdogs!");
         //SQL for add
         pst = con.prepareStatement("INSERT INTO Transactions(TransactionID,Amount,Description,ClientID,Date)values(?,?,?,?,?)");
-        //set the variables for add
+        //sets the variables for add
         pst.setString(1, TransactionID);
         pst.setString(2, Amount);
         pst.setString(3, Description);
         pst.setString(4, ClientID);
         pst.setString(5, Date);
-        //Execute the SQL
+        //Executes the SQL
         pst.executeUpdate();
     }
 
     public ResultSet SelectWhere(String id) {
-        //Create the connection object
+        //Creates the connection object
         Connection con;
-        //create the resulset object to be returned. 
+        //creates the resulset object to be returned. 
         ResultSet rs = null;
         //try statement
         try {
-            //create a preparedstatement
+            //creates a preparedstatement
             PreparedStatement pst;
             //connect to the database
             Class.forName("com.mysql.jdbc.Driver");
@@ -91,7 +91,7 @@ public class Transaction extends Enity {
             pst = con.prepareStatement("SELECT * FROM Transactions where TransactionID = ?");
             //set the variables for sql statement
             pst.setString(1, id);
-            //execute the query
+            //executes the query
             rs = pst.executeQuery();
         } //catches  
         catch (ClassNotFoundException ex) {
@@ -104,20 +104,20 @@ public class Transaction extends Enity {
     }
 
     public ResultSet Select() {
-        //Create the connection object
+        //Creates the connection object
         Connection con;
-        //create the resulset object to be returned. 
+        //creates the resulset object to be returned. 
         ResultSet rs = null;
         //try
         try {
-            //connect to the database
+            //connects to the database
             Class.forName("com.mysql.jdbc.Driver");
             con = DriverManager.getConnection("jdbc:mysql://cloud19.hostgator.com/uzaqleuw_Simpledatabase", "uzaqleuw_root", "3Hotdogs!");
             //Prepare the sql statement
             String query = "SELECT * FROM Transactions";
-            //Create a statement
+            //Creates a statement
             Statement st = con.createStatement();
-            //Executet the SQL
+            //Execute the SQL
             rs = st.executeQuery(query);
 
         } //catches
